@@ -1,0 +1,30 @@
+--- # playbook for task
+- hosts: ip of the box
+  sudo: yes
+  user: ??
+  connection: ssh
+
+  tasks: 
+   -name: create login user
+     user: 
+     name: testuser
+     passwd: ???
+     group: ??
+     state: present
+     shell: /bin/bash
+     createhome: yes
+     home: /home/testuser
+   - name: setting time zone
+     timezone:
+      name: asia/kolkata
+   - name: copy the files
+     copy:
+      src: ?///?
+      dest: /home/testuser/directory
+      owner: ??
+      group: ???
+      mode: u=r,g=rw,o=rwe
+   - name: installing applictaions
+     action: apt name=python state=present
+     action: apt name=supervosord state=present
+     action: apt name=consul state=latest   
